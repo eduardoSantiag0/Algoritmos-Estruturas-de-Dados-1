@@ -1,0 +1,23 @@
+Exercício 1.4 O que é portabilidade de código? E o que é
+reusabilidade de código?
+- R: É a capacidade do mesmo programa ser executado em outros ambientes de hardware e software. RReusabilidade é a capacidade de um código ser reutilizado em diferentes partes de um mesmo projeto ou em outros projetos.
+
+
+Exercício 2.3 Algum Elemento Igual a X? 
+Boolean AlgumElementoIgualaX (parâmetro por referência P do tipo Pilha, parâmetro X do tipo inteiro);
+- R: 
+
+int elementoAtual;
+Enquanto (!P.estaVazia()) {
+    elementoAtual = Desempilha(P1);
+    se (elementoAtual == X) {
+        retorna TRUE;
+    }
+
+    retorna FALSE;
+}
+
+Exercício 2.20 Para que serve uma Pilha? Em que tipo de
+situações uma Pilha pode ser utilizada?
+
+- R: A Pilha tem como função cuidar de situações em que o último passo inserido seja o próximo a ser executado. A Pilha pode ser usada para retornar a um estado, como no histórico de um navegador por exemplo. Uma pilha de chamada permite que o programa retorne ao ponte de chamada quando umma função termina.
