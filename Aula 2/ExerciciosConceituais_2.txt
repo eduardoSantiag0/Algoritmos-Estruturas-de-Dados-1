@@ -1,0 +1,33 @@
+Exercício 3.27 Na versão do Snake descrita no Desafio 2, no decorrer do jogo a Cobra irá comer um quadradinho colorido e você precisará saber se esse quadradinho colorido é da cor da cabeça da Cobra ou não. E para isso, precisará saber a cor da cabeça da Cobra. Você tem duas alternativas para implementar uma operação que consulta o valor do primeiro elemento de uma Fila: pelo botão do volume (acionando as Operações Primitivas da Fila), ou abrindo a TV (solução dependente da implementação). Qual destas duas alternativas você considera mais interessante para seu projeto, e por que?
+
+- R: A alternativa de consultar o valor acionando as Operações Primitivas é mais interessante pois reutiliza código e abstrai os detalhes da implementação. Assim, podemos nos concentrar na lógica do jogo sem se preocupar com o funcionamento interno da estrutura. 
+
+
+Exercício 3.13 As Filas São Iguais?
+- R:
+
+Boolean Iguais (parâmetros por referência F1, F2 do tipo Fila) 
+{
+    se (F1.estaVazia() && F2.estaVazia()) 
+        retorna TRUE;
+
+    int topo1, topo2;
+    F1.desenfileirar (topo1);
+    F2.desenfileirar (topo2);
+
+    bool iguais = TRUE;
+
+    Enquanto (!F1.estaVazia() || !F2.estaVazia()) 
+    {
+        F1.desenfileirar(topo1);
+        F2.desenfileirar(topo2);
+
+        se (topo1 != topo2)
+        {
+            iguais = FALSE;
+        }
+
+    }
+
+    return iguais;
+}
