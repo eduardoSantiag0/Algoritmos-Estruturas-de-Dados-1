@@ -10,7 +10,6 @@
     "-Wall",
     "-Wextra",
     "-Wpedantic",
-    "-Wshadow",
     "-Wformat=2",
     "-Wcast-align",
     "-Wconversion",

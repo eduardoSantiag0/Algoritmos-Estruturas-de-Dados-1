@@ -25,6 +25,9 @@ public:
     int remover(int agulha);
     void imprimir() const;
 
+    Node* procuraX(int x) const; 
+    void inserirOrdenado(int valor);
+
 };
 
 #endif
