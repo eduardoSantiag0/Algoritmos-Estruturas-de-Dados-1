@@ -1,5 +1,5 @@
-#ifndef LISTA_ENCADEADA_H
-#define LISTA_ENCADEADA_H
+#ifndef LISTA_CADASTRAL_H
+#define LISTA_CADASTRAL_H
 
 #include <iostream>
 
@@ -8,26 +8,27 @@ struct Node
     int valor;
     Node* prox;
 
-    Node(int valor) : valor(valor), prox(nullptr) { };
+    Node(int valor) : valor(valor), prox(nullptr)
+    { 
+    };
 };
 
-class ListaEncadeada
+class ListaCadastral
 {
 private:
     Node* cabeca;
-    Node* cauda;
     int numeroElementos;
 
 public: 
-    ListaEncadeada();
-    bool cheia() const;
-    bool vazia() const;
+    ListaCadastral();
     void inserir(int valor);
     int remover(int agulha);
     void imprimir() const;
 
     Node* procuraX(int x) const; 
     void inserirOrdenado(int valor);
+
+    void interseccao(ListaCadastral& outraLista);
 
 };
 

@@ -1,53 +1,37 @@
-#include "ListaEncadeada.hpp"
+#include "ListaCadastral.hpp"
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 2a10cd592d1ac4f491b4af57634600840592ce7d
-ListaEncadeada::ListaEncadeada() 
+ListaCadastral::ListaCadastral() 
 {
     cabeca = nullptr;
-    cauda = nullptr;
     numeroElementos = 0;
 }
 
-bool ListaEncadeada::vazia() const
-{
-    return cabeca == nullptr;
-}
 
-void ListaEncadeada::inserir(int valor)
+void ListaCadastral::inserir(int valor)
 {
    std::cout << "INSERINDO... " << std::endl;
     
     Node* novo = new Node(valor);
-<<<<<<< HEAD
-
-=======
     //* Começo da Lista
->>>>>>> 2a10cd592d1ac4f491b4af57634600840592ce7d
     if (cabeca == nullptr) {
         cabeca = novo;
-        cauda = novo;
-        novo->prox = cabeca;
-    } else {
-        cauda->prox = novo;
-        novo->prox = cabeca;
-        cauda = novo;
+        numeroElementos++;
+        return;
     }
 
-    // Node* walk = cabeca;
-    // while (walk->prox != nullptr)
-    // {
-    //     walk = walk->prox;
-    // }
-    // walk->prox = novo;
+    Node* walk = cabeca;
+    while (walk->prox != nullptr)
+    {
+        walk = walk->prox;
+    }
+
+    walk->prox = novo;
     numeroElementos++;
 
 }
 
 
-void ListaEncadeada::inserirOrdenado(int valor)
+void ListaCadastral::inserirOrdenado(int valor)
 {    
     Node* novo = new Node(valor);
 
@@ -80,51 +64,31 @@ void ListaEncadeada::inserirOrdenado(int valor)
 
 }
 
-int ListaEncadeada::remover(int agulha)
+int ListaCadastral::remover(int agulha)
 {
-    if (cabeca == nullptr) {
-        return -1;
-    }
-
     Node* atual = cabeca;
-    Node* ant = cauda;
+    Node* ant = nullptr;
     int out = -1;
 
-    //* Seja o Primeiro
+    //* Caso seja o Primeiro
     if (cabeca->valor == agulha) {
         out = cabeca->valor;
-
-        //* Só tem a cabeca
-        if (cabeca == cabeca->prox) {
-            delete cabeca;
-            cabeca = nullptr;
-            cauda = nullptr;
-        } else { //* Tenha mais de um elemento
-            Node* temp = cabeca;
-            cabeca = cabeca->prox;
-            cauda->prox = cabeca;
-            delete temp;
-        }
-        
+        Node* temp = cabeca;
+        cabeca = cabeca->prox;
+        delete temp;
         numeroElementos--;
         return out;
     }
-
-
-    do {
+    while (atual != nullptr && atual->valor != agulha)
+    {
         ant = atual;
         atual = atual->prox;
-    } while (atual != cabeca && atual->valor != agulha);
+    }
 
     //* ATUALIZAR PONTEIROS
 
-    if (atual != cabeca && atual->valor == agulha) {
-
+    if (atual != nullptr && atual->valor == agulha) {
         ant->prox = atual->prox;
-        if (atual == cauda) {
-            cauda = ant;
-            cauda->prox = cabeca;
-        }
         std::cout << "REMOVENDO: " << atual->valor << std::endl;
         out = atual->valor;
         delete atual;
@@ -137,22 +101,8 @@ int ListaEncadeada::remover(int agulha)
     
 }
 
-void ListaEncadeada::imprimir() const
+void ListaCadastral::imprimir() const
 {
-<<<<<<< HEAD
-    if (cabeca == nullptr) {
-        std::cout << "A lista está vazia." << std::endl;
-        return;
-    }
-
-    Node* walk = cabeca;
-    std::cout << "Total de numeros:: " << numeroElementos << std::endl;
-    
-    do {
-        std::cout << "Valor: " << walk->valor << std::endl;
-        walk = walk->prox;
-    } while (walk != cabeca);
-=======
     if (!cabeca) return;
     Node* atual = cabeca;
     std::cout << "\tTotal de numeros: " << numeroElementos << std::endl;
@@ -162,12 +112,11 @@ void ListaEncadeada::imprimir() const
         std::cout << "Valor: " << atual->valor << std::endl;
         atual = atual->prox;
     }
->>>>>>> 2a10cd592d1ac4f491b4af57634600840592ce7d
 
     std::cout << "\tFIM DA LISTA" << std::endl;
 }
 
-Node* ListaEncadeada::procuraX(int x) const
+Node* ListaCadastral::procuraX(int x) const
 {
 
     if (cabeca == nullptr) return nullptr;
@@ -188,3 +137,28 @@ Node* ListaEncadeada::procuraX(int x) const
 
 }
 
+
+
+void ListaCadastral::interseccao(ListaCadastral& outraLista)
+{
+    if (outraLista.cabeca == nullptr) return;
+
+    ListaCadastral temp = ListaCadastral();
+
+    Node* cabecaLista1 = this->cabeca;
+    Node* cabecaLista2 = outraLista.cabeca;
+     
+     while (cabecaLista1 && cabecaLista2)
+     {
+
+        if (cabecaLista1->valor == cabecaLista2->valor) {
+            temp.inserir(cabecaLista1->valor);
+        }
+        cabecaLista1 = cabecaLista1->prox;
+        cabecaLista2 = cabecaLista2->prox;
+     }
+
+    std::cout << "\tInterseção das listas:" << std::endl;
+     temp.imprimir();
+
+}
