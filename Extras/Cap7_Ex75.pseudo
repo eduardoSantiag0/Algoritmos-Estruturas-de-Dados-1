@@ -1,0 +1,82 @@
+// Exercício 7.12 Remove_P, EstáNaLista e Info_de_P 
+// Implemente  as  seguintes  Operações  de  Baixo  Nível,  especificadas no  Quadro  7.11:  Remove_P,  EstáNaLista  e  Info_de_P.  A  Lista Básica deve implementada como uma Lista Duplamente Encadeada, Circular, e com Nó Header. Apresente também diagramas com a execução passo a passo das operações, semelhante ao realizado no Quadro 7.14
+
+//? Lista 
+//? Duplamente Encadeada
+//? Circular 
+//? com Nó Header
+
+//* 1. Ser o primeiro
+//* 2. Ser o último
+//* 3. Retirar no Meio
+//* 4. Lista Vazia 
+//* 5. Apenas um elemento
+//* 6. Não tem na lista 
+Remove_P (Lista L, char X) do 
+
+    // Caso 4: Lista Vazia
+    if L.Header->prox == L.Header return false;
+    //! if L.Header->prox == NULL return false;
+
+    bool ok = false;
+    NodePtr paraRemover = EstáNaLista (L, X, ok);
+
+    //Caso 6: Não tem na Lista
+    if (!ok) do 
+        return false;
+    end
+
+    // Caso 5: Apenas um item na Lista
+    if L.Header->prox == L.Header->anterior do 
+        L.Header->prox = L.Header;
+        L.Header->anterior = L.Header;
+        delete(paraRemover);
+        return true;
+    end 
+
+
+    // Caso 1: Ser o primeiro
+    if L.Header->prox == paraRemover do 
+        L.Header->prox = paraRemover.prox;
+        paraRemover.prox->anterior = L.Header;
+        delete(paraRemover);
+        return true;
+    end
+
+    // Caso 2: Ser o último
+    if L.Header->anterior == paraRemover do 
+        L.Header->anterior = paraRemover.anterior;
+        paraRemover.anterior->prox = L.Header;
+        delete(paraRemover);
+        return true;
+    end
+
+    //Caso 3: Retirar no Meio
+    NodePtr dirRemover = paraRemover->prox;
+    NodePtr esqRemover = paraRemover->anterior;
+
+    dirRemover->anterior = esqRemover;
+    esqRemover->prox = dirRemover;
+    delete(paraRemover);
+
+    return true;
+
+end
+
+
+EstáNaLista (Lista L, char X, bool ok) do 
+    NodePtr walk = L.Header->prox;
+
+    while (walk != L.Header) {
+        if (walk.valor == X) {
+            ok = true;
+            return walk;
+        }
+        walk = walk->prox;
+    }
+    ok = false;
+    return NULL;
+end
+
+
+Info_de_P
