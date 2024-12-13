@@ -7,9 +7,20 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
+<<<<<<< HEAD
+      "externalConsole": true,
+      "cwd": "d:/11F0/Sync/1Santiago11/Ufscar/Ufscar 2024-2/AED1/Algoritmos-Estruturas-de-Dados-1/Aula 3",
+      "program": "d:/11F0/Sync/1Santiago11/Ufscar/Ufscar 2024-2/AED1/Algoritmos-Estruturas-de-Dados-1/Aula 3/build/Debug/outDebug",
+=======
       "externalConsole": false,
+<<<<<<< HEAD
       "cwd": "/home/superdu/1Du/UFSCar/AED1/JOGO",
       "program": "/home/superdu/1Du/UFSCar/AED1/JOGO/build/Debug/outDebug",
+=======
+      "cwd": "/home/superdu/1Du/UFSCar/AED1/Aula 5/NP",
+      "program": "/home/superdu/1Du/UFSCar/AED1/Aula 5/NP/build/Debug/outDebug",
+>>>>>>> 2a10cd592d1ac4f491b4af57634600840592ce7d
+>>>>>>> refs/remotes/origin/main
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
