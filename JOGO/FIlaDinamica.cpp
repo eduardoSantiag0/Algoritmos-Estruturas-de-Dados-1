@@ -42,7 +42,8 @@ Cores FilaDinamica::desenfileirar()
     return out;
 }
 
-std::string FilaDinamica::corParaString(Cores cor) const {
+std::string FilaDinamica::corParaString(Cores cor) const 
+{
     switch (cor) {
         case Cores::VERMELHO: return "VERMELHO";
         case Cores::AZUL: return "AZUL";

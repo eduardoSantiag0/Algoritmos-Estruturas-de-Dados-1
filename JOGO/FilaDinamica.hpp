@@ -18,8 +18,8 @@ class FilaDinamica
 private:
     std::vector<Cores> fila;
     int comeco, fim, numElementos;
-public:
     std::string corParaString(Cores cor) const ;
+public:
     FilaDinamica();
     bool enfileirar(int num);
     Cores desenfileirar();

@@ -8,10 +8,11 @@
 
 1. **Ser o último:** O elemento a ser removido é o último.
 
-- (requer busca pelo anterior, já que a lista não é duplamente encadeada).
 5. **Retirar no Meio:** O elemento a ser removido está no meio da lista.
 
 1. **Não encontrado na lista:** O elemento não está na lista.
+
+- Atualizar ponteiro Node->prox
 
 ### Operação de Inserção
 1. Inserir em uma lista vazia.
@@ -21,6 +22,7 @@
 1. Inserir no fim da lista.
 
 1. Inserir em uma posição específica.
+- Atualizar ponteiro Node->prox
 
 
 
@@ -28,15 +30,17 @@
 ### Operação de Remoção
 1. **Lista Vazia:** Não há elementos para remover.
 
-1. **Apenas um elemento:** O único elemento na lista precisa ser removido.
+2. **Apenas um elemento:** O único elemento na lista precisa ser removido.
 
-1. **Ser o primeiro:** O elemento a ser removido é o primeiro.
+3. **Ser o primeiro:** O elemento a ser removido é o primeiro.
 
-1. **Ser o último:** O elemento a ser removido é o último.
+4. **Ser o último:** O elemento a ser removido é o último.
 
-1. **Retirar no Meio:** O elemento a ser removido está no meio.
+5. **Retirar no Meio:** O elemento a ser removido está no meio.
+- Atualizar ponteiro Node->prox e Node->anterior de Anterior a ser removido e do Seguinte do Node removido
 
-1. **Não encontrado na lista:** O elemento não está na lista.
+6. **Não encontrado na lista:** O elemento não está na lista.
+
 
 
 ### Operação de Inserção

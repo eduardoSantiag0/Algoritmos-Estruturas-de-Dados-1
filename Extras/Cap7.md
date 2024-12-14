@@ -203,3 +203,13 @@ Retira (Lista L, Char X, bool DeuCerto) {
 
 ## 7.5  TAD  Lista  Cadastral  Implementada  como  Lista Circular Duplamente Encadeada, Não Ordenada 
 - R:
+
+
+#   Lista  Cadastral  Sem  Elementos  Repetidos  Implementada  como  uma  Lista  Encadeada  Ordenada  Circular 
+### Operação para Retirar Elemento - Casos a Tratar
+- Caso 1: Está Vazia
+- Caso 2: É o Primeiro
+- Caso 3: Está no Meio
+- Caso 4: Está no Final
+- Caso 5: Não está na lista
+- Caso 6: É o único elemento

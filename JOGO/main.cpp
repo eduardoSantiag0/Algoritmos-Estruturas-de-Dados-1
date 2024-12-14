@@ -5,11 +5,13 @@
 #include "FilaDinamica.hpp"
 // #include "utils.cpp"
 
-void initializeRandomSeed() {
+void initializeRandomSeed() 
+{
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
 }
 
-int randomIntGenerator(int max) {
+int randomIntGenerator(int max) 
+{
     return std::rand() % max;
 }
 
@@ -21,7 +23,8 @@ void printMenu()
               << "\t 4 - Finalizar aplicação" << std::endl;
 }
 
-Cores mudarCor(int num) {
+Cores mudarCor(int num) 
+{
     Cores mudar;
     switch (num) {
         case 0: mudar = Cores::VERMELHO; break;
@@ -85,8 +88,8 @@ int main (void)
         std::cout << std::endl;
     }
 
-    std::cout << std::endl;
 
+    std::cout << "\nFinalizando..." << std::endl;
     fila.mostrarFila();
 
     return 0;

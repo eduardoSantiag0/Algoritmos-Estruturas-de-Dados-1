@@ -1,0 +1,41 @@
+
+
+function criarFila(tamanho)do 
+    tamanhoMaximo = tamanho
+    fila = [NULO] * tamanho
+    inicio = 0
+    fim = -1
+    quantidade = 0
+    return {tamanhoMaximo, fila, inicio, fim, quantidade}
+end
+
+function estaCheia(filaCircular) do     
+    return filaCircular.quantidade == filaCircular.tamanhoMaximo
+end
+
+function estaVazia(filaCircular) do     
+    return filaCircular.quantidade == 0
+end
+
+function adicionarCliente(filaCircular, cliente): do 
+    if estaCheia(filaCircular) return false;
+    filaCircular.fila[fim] = cliente;
+    filaCircular.fim++;
+    filaCircular.quantidade++;
+    return true;
+end
+
+
+function removeCliente(filaCircular) do 
+
+    if estaVazia(filaCircular) RETURN false;
+
+    Clinte clienteRemover = filaCircular.fila[filaCircular.inicio];
+
+    filaCircular[filaCircular.inicio] = NULL;
+    filaCircular.inicio = (filaCircular.inicio + 1) MOD filaCircular.tamanhoMaximo;
+
+    filaCircular.quantidade--;
+    return clienteRemover;
+
+end
