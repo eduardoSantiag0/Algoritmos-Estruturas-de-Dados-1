@@ -1,0 +1,86 @@
+    Parte A - Exercícios conceituais
+
+Exercício 8.14 Considere a Árvore do Quadro 8.31 (acima). Indique:
+● O número máximo de Subárvores; 
+    R: Com o tabuleiro vazio, existem 9 jogadas possíveis. Portanto, são 9 subárvores
+● A Altura da Árvore:
+    R: O número máximo de jogadas, e consequentemente a altura, são 9. 
+
+
+Exercício 8.16 Compare o uso de uma Árvore Binária de Busca e uma Lista Cadastral, para armazenamento de um conjunto de elementos. Em quais situações o uso da ABB seria vantajoso? Quais seriam as possíveis desvantagens?
+
+- R: ABB é  vantajoso para encontrar valores, visto que a navegação é ordenada e ela organiza os elementos automaticamente. 
+
+A desvantagem é que uma simples árvore ABB pode se tornar desbalanceada, caso a inserção dos itens sejam próximo de ordenado. Tornando a ABB em uma Lista Cadastralque ocupa mais memória.
+
+
+
+    Parte B - Exercícios de desenvolvimento: Soma dos Elementos de uma Árvore quaternária (4 filhos). Retornar valor inteiro.
+
+struct No {
+    int valor;
+    No* filho1;
+    No* filho2;
+    No* filho3;
+    No* filho4;
+}
+
+int function somaElementosArvoreQuaternaria(No raiz) {
+    if (raiz == NULL) 
+        return 0;
+
+    int out = raiz->valor; 
+    
+    out += somaElementosArvoreQuaternaria(raiz.filho1);
+    out += somaElementosArvoreQuaternaria(raiz.filho2);
+    out += somaElementosArvoreQuaternaria(raiz.filho3);
+    out += somaElementosArvoreQuaternaria(raiz.filho4);
+
+    return out;
+}
+
+
+
+    Parte C - Aplicações: 
+
+    
+C.1 Descreva a aplicação, a árvore (o que estaria armazenado, como seria a árvore, faça um diagrama, etc.), e as principais operações a serem implementadas sobre a árvore, que viabilizariam a solução para a aplicação.
+
+- Árvore Escolhida: Uma árvore de decisão em um jogo
+Tem como base um jogo de nave, após ganhar dinheiro dentro do jogo, ele pode fazer upgrade em sua nave. A cada compra, ele pode escolher entre 
+    1. Aumentar o tamanho do tiro - Resultando em mais dano 
+    2. Aumentar a velocidade dos tiros - Resultando em tiros mais rápidos
+
+Estrutura da Árvore Binária:
+    Filhos à esquerda -> Tiros com tamanho maior
+    Filhos à direita -> Tiros com maior velocidade
+    
+
+Cada nível na árvore corresponde a uma nova etapa de upgrade, e as folhas  representam configurações finais da nave após um número máximo de upgrades.
+
+
+C.2- Desenvolva o algoritmo para uma das operações que você identificou
+
+struct  No {
+    int tamanhoTiro
+    int velocidadeTiro    
+    No* esquerdaTamanhoTiro   
+    No* direitaVelocidadeTiro    
+}
+
+
+// A cada decisão de upgrade, os nós filhos são criados dinamicamente.
+function upgrade(noAtual, aumentoDano, aumentoVelocidade, aumentoCusto):
+    
+    // Cria o nó filho do atual para Esquerda
+
+    noAtual.esquerda <- CriarNo()
+    noAtual.esquerda.tamanhoTiro <- noAtual.tamanhoTiro + aumentoDano
+    noAtual.esquerda.velocidadeTiro <- noAtual.velocidadeTiro
+    noAtual.esquerda.custoUpgrade <- noAtual.custoUpgrade + aumentoCusto
+
+    // Cria o nó filho do atual para Direita
+    noAtual.direita <- Novo No
+    noAtual.direita.tamanhoTiro <- noAtual.tamanhoTiro
+    noAtual.direita.velocidadeTiro <- noAtual.velocidadeTiro + aumentoVelocidade
+    noAtual.direita.custoUpgrade <- noAtual.custoUpgrade + aumentoCusto
