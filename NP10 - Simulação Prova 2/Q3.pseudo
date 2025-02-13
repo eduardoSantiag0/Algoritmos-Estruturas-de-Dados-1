@@ -1,0 +1,31 @@
+void desceHeap(int v[], int i, int nro_elementos) {
+    int maior = i;  
+    int esq = 2 * i + 1; 
+    int dir = 2 * i + 2; 
+
+    if (esq < nro_elementos && v[esq] > v[maior])
+        maior = esq;
+
+    if (dir < nro_elementos && v[dir] > v[maior])
+        maior = dir;
+
+    if (maior != i) {
+        swap(v[i], v[maior]);
+        desceHeap(v, maior, nro_elementos);
+    }
+}
+
+// int removeHeap(int v[], int &nro_elementos, int *px) {
+//     if (nro_elementos == 0) 
+//         return 0;
+
+//     *px = v[0]; 
+
+
+//     v[0] = v[nro_elementos - 1];
+//     nro_elementos--; 
+
+//     desceHeap(v, 0, nro_elementos);
+
+//     return px; 
+// }

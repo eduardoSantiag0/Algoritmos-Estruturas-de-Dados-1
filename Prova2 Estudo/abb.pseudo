@@ -1,0 +1,38 @@
+InsertBST (Raiz r, int num)
+{
+    if (!raiz) {
+        r = NewNode(num); 
+        return true;
+    }
+    if (raiz == num) return false;
+    
+    if (num > raiz.valor ) {
+        if (!raiz.dir) 
+            raiz.dir = NewNode(num);
+        else
+            InsertBST (r.dir, int num);
+    }
+    else 
+        if (!raiz.esq) 
+            r.esq = NewNode(num);
+        else 
+            InsertBST (r.esq, int num);
+}
+
+
+Search (Raiz r, int agulha) 
+{
+    if (!raiz) 
+        return;
+    
+    if (r == agulha) 
+        return rr;
+
+    if (agulha > r.valor ) {
+        Search(r.dir, agulha)
+    } else {
+        Search(r.esq, agulha)
+    }
+    
+
+}

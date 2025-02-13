@@ -1,0 +1,40 @@
+
+// Questão 1 (4 pontos) Considere uma Árvore de Previsão de Jogadas na qual cada nó possui a situação do tabuleiro em uma possível jogada, o resultado do jogo para aquela jogada, e um ponteiro para cada um dos filhos daquele nó.  
+// O  resultado  para  uma  jogada  pode  ser  ‘V’  (Vitória),  ‘D’  (Derrota),  ‘E’  (Empate)  ou  ‘?’  (indefinido).  
+// A  árvore  é implementada com alocação encadeada e dinâmica de memória, conforme a declaração abaixo. 
+// A raiz (R) e os filhos (Sons) são do tipo ponteiro para nó (nodeptr). 
+// Implemente uma função que conta e retorna quantos resultados do tipo ‘V’ (Vitória) existem em uma árvore R.
+
+const int max_sons = 9; // número máximo de filhos  
+struct _node { 
+    Tabuleiro T;
+    Char Resultado; // "V", "E", "D", ou "?" 
+    struct _node *Sons[max_sons]; // ponteiros para os filhos do nó 
+}; 
+
+typedef struct _node node; 
+typedef struct _node* nodeptr;  
+
+nodeptr R = nullptr; // raiz da árvore  
+
+
+// Conta o número de jogadas com resultado V
+int NumeroDeVitorias (nodeptr R) {
+    if (R == nullptr) return 0; 
+
+    int count = 0;
+
+    if (R->Resultado == "V") {
+        count++;
+    }
+    
+    for (int i = 0; i <= max_sons ; i++) {
+
+        if (R->Sons[i] != nullptr) {
+            count += NumeroDeVitorias(R->Sons[i]); 
+        }
+    }
+
+    return count;
+
+} 

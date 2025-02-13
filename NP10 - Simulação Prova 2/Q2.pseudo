@@ -1,0 +1,60 @@
+// Considere uma Árvore Binária de Busca (ABB), de raiz R, implementada com alocação encadeada e dinâmica de memória, conforme os diagramas abaixo. 
+//A Árvore não contém elementos repetidos. Implemente a operação: 
+
+// void Remove (variável por referência R do tipo ABB, Variável X do tipo int, variável por referência Ok do tipo bool); 
+
+bool procurarChave(ABB R, int x) {
+    if (R == nullptr) { 
+        return false;
+    }
+    
+    if (R->chave == X) { // Encontrou a chave
+        return true;
+    }
+
+    if (R-> chave < x)
+        procurarChave(R->esq, x);
+    else 
+        procurarChave(R->dir, x);
+}
+
+Nodeptr encontrarMaisADireita(ABB R) {
+    if (R == nullptr) return nullptr;
+
+    while (R->dir != nullptr)
+        R = R->dir;
+
+    return R;
+}
+
+void Remove(ABB &R, int x, bool &ok) {
+    if (!procurarChave(R, x)) {
+        ok = false;
+        return;
+    }
+
+    if (x < R->chave) {
+        Remove(R->esq, x, ok);
+    } else if (x > R->chave) {
+        Remove(R->dir, x, ok);
+    } else { 
+        if (R->esq == nullptr && R->dir == nullptr) { // Caso 1: Nó folha
+            delete R;
+            R = nullptr;
+        } else if (R->esq == nullptr) { // Caso 2: Apenas filho direito
+            Nodeptr temp = R;
+            R = R->dir;
+            delete temp;
+        } else if (R->dir == nullptr) { // Caso 2: Apenas filho esquerdo
+            Nodeptr temp = R;
+            R = R->esq;
+            delete temp;
+        } else { // Caso 3: Dois filhos
+            Nodeptr substituto = encontrarMaisADireita(R->esq);
+            R->chave = substituto->chave; 
+            Remove(R->esq, substituto->chave, ok); 
+        }
+
+        ok = true;
+    }
+}
